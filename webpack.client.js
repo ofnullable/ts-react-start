@@ -26,7 +26,9 @@ const loaders = {
       ident: 'postcss',
       plugins: () => [
         require('postcss-flexbugs-fixes'),
-        require('postcss-preset-env')({ stage: 3 }),
+        require('postcss-preset-env')({
+          stage: 3,
+        }),
         require('cssnano'),
       ],
     }
