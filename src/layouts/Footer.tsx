@@ -16,13 +16,13 @@ const footerStyle = css`
   nav {
     flex: 1.5;
     height: 100%;
-    padding: 12px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     a {
-      color: black;
+      color: initial;
       padding: 12px;
       text-decoration: none;
     }
@@ -35,7 +35,7 @@ const footerStyle = css`
 const Footer = () => {
   return (
     <footer css={footerStyle}>
-      <span>Footer!</span>
+      <span>TS-React-Starter</span>
       <nav>
         <NavLink exact to='/'>Home</NavLink>
         <NavLink to='/sample'>sample</NavLink>

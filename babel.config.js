@@ -13,6 +13,14 @@ module.exports = (api) => {
         },
       ],
     ],
-    plugins: ['@loadable/babel-plugin'],
+    plugins: [
+      '@loadable/babel-plugin',
+      [
+        'babel-plugin-emotion',
+        {
+          sourceMap: true,
+        },
+      ],
+    ],
   };
 };

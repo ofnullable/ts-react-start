@@ -9,10 +9,13 @@ const headerStyle = css`
   flex-shrink: 0;
   align-items: center;
   nav {
+    margin: 0 auto;
     padding: 0 12px;
     display: flex;
+    width: 100%;
+    max-width: 1200px;
     a {
-      color: black;
+      color: initial;
       padding: 0 8px;
       text-decoration: none;
     }
@@ -28,6 +31,7 @@ const Header = () => {
       <nav>
         <NavLink exact to="/">Go Home</NavLink>
         <NavLink to="/sample">Go Sample</NavLink>
+        <NavLink to='/error'>Go Error</NavLink>
       </nav>
     </header>
   );
