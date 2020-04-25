@@ -1,13 +1,21 @@
 @import "~reset-css";
 @import "~normalize.css";
 
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: sans-serif;
   height: 100%;
+  font-size: 13px;
+  font-family: 'RIDIBatang', sans-serif;
 }
 
 body {
@@ -21,5 +29,18 @@ body {
 
   main {
     flex: 1;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .container-fluid {
+    margin: 0 auto;
+    padding: 0 12px;
+    width: 100%;
   }
 }
