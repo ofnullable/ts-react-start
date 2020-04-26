@@ -59,7 +59,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.tsx?$/,
-      use: [loaders.babel, loaders.ts],
+      use: [loaders.babel],
     }, {
       test: /\.s[ac]ss$/,
       use: [loaders.style, loaders.css, loaders.postcss, loaders.sass],
