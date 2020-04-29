@@ -11,6 +11,9 @@ const loaders = {
   babel: {
     loader: 'babel-loader',
   },
+  ts: {
+    loader: 'ts-loader',
+  },
   style: prod ? MiniCssExtractPlugin.loader : 'style-loader',
   css: 'css-loader',
   sass: 'sass-loader',
@@ -20,7 +23,7 @@ const loaders = {
     options: {
       limit: 8192,
       name: 'static/media/[name].[hash:8].[ext]',
-    }
+    },
   },
 };
 
@@ -45,13 +48,13 @@ module.exports = {
   module: {
     rules: [{
       test: /\.tsx?$/,
-      use: [loaders.babel],
+      use: [loaders.babel, loaders.ts],
     }, {
       test: /\.(c|sc|sa)ss$/,
       use: [loaders.style, loaders.css, loaders.postcss, loaders.sass],
     }, {
       test: /\.(jpe?g|png|gif|bmp)$/,
-      use: [loaders.url]
+      use: [loaders.url],
     }],
   },
 
@@ -64,10 +67,10 @@ module.exports = {
     new LoadablePlugin(),
     new CleanWebpackPlugin(),
     prod ?
-        new MiniCssExtractPlugin({
-          filename: 'static/css/[name].[hash:8].css',
-          chunkFilename: 'static/css/[name].[hash:8].chunk.css',
-        })
-        : new webpack.HotModuleReplacementPlugin()
+      new MiniCssExtractPlugin({
+        filename: 'static/css/[name].[hash:8].css',
+        chunkFilename: 'static/css/[name].[hash:8].chunk.css',
+      })
+      : new webpack.HotModuleReplacementPlugin(),
   ],
 };

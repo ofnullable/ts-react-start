@@ -8,6 +8,9 @@ const loaders = {
   babel: {
     loader: 'babel-loader',
   },
+  ts: {
+    loader: 'ts-loader',
+  },
   style: 'style-loader',
   css: {
     loader: 'css-loader',
@@ -23,7 +26,7 @@ const loaders = {
       limit: 8192,
       emitFile: false,
       name: 'static/media/[name].[hash:8].[ext]',
-    }
+    },
   },
 };
 
@@ -33,11 +36,11 @@ module.exports = {
   target: 'node',
 
   node: {
-    __dirname: false
+    __dirname: false,
   },
 
   entry: {
-    server: './src/server.tsx',
+    server: './src/server',
   },
 
   output: {
@@ -51,13 +54,13 @@ module.exports = {
   module: {
     rules: [{
       test: /\.tsx?$/,
-      use: [loaders.babel],
+      use: [loaders.babel, loaders.ts],
     }, {
       test: /\.(c|sc|sa)ss$/,
       use: [loaders.style, loaders.css, loaders.postcss, loaders.sass],
     }, {
       test: /\.(jpe?g|png|gif|bmp)$/,
-      use: [loaders.url]
+      use: [loaders.url],
     }],
   },
 
