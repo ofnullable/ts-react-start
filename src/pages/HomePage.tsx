@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Request } from 'express';
 import { ReduxStore } from '../store';
 import { loadUsersRequest } from '../store/actions/users';
+import { LoadData } from "../server/ssrMiddleware";
 
 function HomePage() {
   return (
@@ -11,7 +11,7 @@ function HomePage() {
   );
 }
 
-export const loadData = async ({ req, store }: { req: Request, store: ReduxStore }) => {
+export const loadData: LoadData = async ({ store }: { store: ReduxStore }) => {
   store.dispatch(loadUsersRequest());
 };
 

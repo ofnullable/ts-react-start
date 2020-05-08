@@ -3,7 +3,7 @@ import * as React from 'react';
 import { resolve } from 'path';
 import { Provider } from 'react-redux';
 import { matchRoutes } from 'react-router-config';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter, match } from 'react-router-dom';
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
 import { LoadableComponent } from '@loadable/component';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
@@ -11,14 +11,14 @@ import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import App from '../App';
 import { routes } from '../routes';
 import configureStore, { ReduxStore } from '../store';
-import { Request } from 'express';
 
 export interface Context {
-  req: Request;
   store: ReduxStore;
+  match: match<any>;
 }
 
-type Loader = React.ComponentType<any> & { loadData?: (ctx: Context) => Promise<any> }
+export type LoadData = (ctx: Context) => Promise<any>;
+type DataLoader = React.ComponentType<any> & { loadData?: LoadData }
 
 const router = express.Router();
 
@@ -31,15 +31,12 @@ router.get('*', async (req, res, next) => {
 
   const promises = await Promise.all(
     matchRoutes(routes, req.path)
-      .map(({ route }) =>
-        (route.component as LoadableComponent<any>).load())
-  )
-    .then((comps) =>
-      comps
-          .map((comp: Loader) =>
-            comp.loadData && comp.loadData({ req, store })
-          )
-    );
+      .map(
+          ({ route, match }) =>
+              (route.component as LoadableComponent<any>).load()
+                  .then((comp: DataLoader) =>
+                      comp.loadData ? comp.loadData({ store, match }) : Promise.resolve())
+      ));
 
   const extractor = new ChunkExtractor({ statsFile, entrypoints: ['client'] });
 
