@@ -11,6 +11,11 @@ app.disable('etag');
 app.disable('x-powered-by');
 
 app.use(
+  express.static(resolve('./public'), {
+    index: false,
+  })
+);
+app.use(
   express.static(resolve('./build'), {
     index: false,
   })
@@ -26,5 +31,5 @@ app.use(ssrMiddleware);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`🚦 Server running on port: ${port} 🚦`);
+  console.log(`🚀 Server running on port: ${port} 🚀`);
 });

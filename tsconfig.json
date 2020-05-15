@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": true,
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "target": "esnext",
-    "jsx": "react",
     "strict": true,
     "allowJs": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "typeRoots": ["src/types", "node_modules/@types"]
   },
