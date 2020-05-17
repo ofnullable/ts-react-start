@@ -20,10 +20,7 @@ function configureStore(reduxState: AppState | {}, context: AppContext) {
 
   const sagaMiddleware = createSagaMiddleware();
 
-  const enhancer = compose(
-    applyMiddleware(sagaMiddleware),
-    !prod && devtools ? devtools() : (f: any) => f
-  );
+  const enhancer = compose(applyMiddleware(sagaMiddleware), !prod && devtools ? devtools() : (f: unknown) => f);
 
   const store = createStore(rootReducer, reduxState, enhancer) as ReduxStore;
 

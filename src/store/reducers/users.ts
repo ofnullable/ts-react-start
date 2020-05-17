@@ -1,12 +1,12 @@
 import { produce } from 'immer';
-import { IUser } from '../models';
+import { User } from '../models';
 import { BaseArrayState, BaseState } from './index';
 import * as types from '../actions/types';
 import { UserAction } from '../actions/users';
 
 interface UserState {
-  user: BaseState<IUser>;
-  users: BaseArrayState<IUser>;
+  user: BaseState<User>;
+  users: BaseArrayState<User>;
 }
 
 const initialState: UserState = {

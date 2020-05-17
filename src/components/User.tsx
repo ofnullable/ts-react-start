@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IUser } from '../store/models';
+import { User } from '../store/models';
 
 interface UserProps {
-  user: IUser | null;
+  user: User | null;
   loading: boolean;
 }
 
@@ -11,8 +11,12 @@ function User({ user, loading }: UserProps) {
     <p>load user...</p>
   ) : (
     <div>
-      <h1>{user?.username} ({user?.name})</h1>
-      <p><b>email:</b> {user?.email}</p>
+      <h1>
+        {user?.username} ({user?.name})
+      </h1>
+      <p>
+        <b>email:</b> {user?.email}
+      </p>
     </div>
   );
 }

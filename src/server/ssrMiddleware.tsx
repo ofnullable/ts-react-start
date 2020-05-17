@@ -29,11 +29,10 @@ router.get('*', async (req, res, next) => {
   const sagaPromises = store.run.toPromise();
 
   await Promise.all(
-    matchRoutes(routes, req.path)
-      .map(async ({ route, match }) => {
-        const comp: DataLoader = await (route.component as LoadableComponent<any>).load();
-        return comp.loadData ? comp.loadData({ store, match }) : Promise.resolve();
-      })
+    matchRoutes(routes, req.path).map(async ({ route, match }) => {
+      const comp: DataLoader = await (route.component as LoadableComponent<unknown>).load();
+      return comp.loadData ? comp.loadData({ store, match }) : Promise.resolve();
+    })
   );
 
   const extractor = new ChunkExtractor({ statsFile, entrypoints: ['client'] });

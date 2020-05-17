@@ -11,11 +11,7 @@ if (typeof Proxy === 'undefined') {
 }
 
 function App() {
-  return (
-    <AppLayout>
-      {renderRoutes(routes)}
-    </AppLayout>
-  );
+  return <AppLayout>{renderRoutes(routes)}</AppLayout>;
 }
 
 export default App;

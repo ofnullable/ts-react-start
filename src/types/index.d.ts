@@ -6,5 +6,5 @@ declare global {
     __REDUX_STATE__: AppState;
     __REDUX_DEVTOOLS_EXTENSION__?: () => any;
   }
-  export type LoadData = (ctx: Context) => Promise<any>;
+  export type LoadData = (ctx: Context) => Promise<unknown>;
 }

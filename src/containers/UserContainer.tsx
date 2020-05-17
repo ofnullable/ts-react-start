@@ -8,14 +8,14 @@ import User from '../components/User';
 
 function UserContainer() {
   const { data, loading } = useSelector((state: AppState) => state.users.user);
-  const params = useParams<{id: string}>();
+  const params = useParams<{ id: string }>();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!data) {
       dispatch(loadUserRequest(params.id));
     }
-  }, [])
+  }, []);
 
   return <User user={data} loading={loading} />;
 }

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { IUser } from '../store/models';
+import { User } from '../store/models';
 
 interface UsersProps {
-  users: IUser[] | null;
+  users: User[] | null;
   loading: boolean;
 }
 
