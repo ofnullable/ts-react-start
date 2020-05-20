@@ -1,15 +1,9 @@
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import * as types from '../actions/types';
 import { loadUserApi, loadUsersApi } from '../../apis/user';
-import {
-  loadUserAction,
-  loadUserSuccess,
-  loadUserFailure,
-  loadUsersSuccess,
-  loadUsersFailure,
-} from '../actions/users';
+import { LoadUserAction, loadUserSuccess, loadUserFailure, loadUsersSuccess, loadUsersFailure } from '../actions/users';
 
-function* loadUser({ id }: loadUserAction) {
+function* loadUser({ id }: LoadUserAction) {
   try {
     const { data } = yield call(loadUserApi, id);
     yield put(loadUserSuccess(data));

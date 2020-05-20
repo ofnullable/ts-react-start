@@ -11,14 +11,14 @@ interface UsersPageProps {
 }
 
 function UsersPage({ route }: UsersPageProps) {
-  const { data, loading } = useSelector((state: AppState) => state.users.users)
+  const { data, loading } = useSelector((state: AppState) => state.users.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!data && !loading) {
       dispatch(loadUsersRequest());
     }
-  }, [])
+  }, []);
 
   return (
     <div className="container">
