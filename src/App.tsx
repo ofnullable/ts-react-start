@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { renderRoutes } from 'react-router-config';
+import { useEffect } from 'react';
+import { useStore } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { matchRoutes, renderRoutes } from 'react-router-config';
+import { LoadableComponent } from '@loadable/component';
 
-import AppLayout from './layouts/AppLayout';
 import { routes } from './routes';
+import { ReduxStore } from './store';
+import AppLayout from './layouts/AppLayout';
 
 import './styles/App.scss';
 
@@ -11,7 +16,23 @@ if (typeof Proxy === 'undefined') {
 }
 
 function App() {
+  const store = useStore();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      App.getInitialProps(store as ReduxStore, location.pathname);
+    }
+  }, [location]);
+
   return <AppLayout>{renderRoutes(routes)}</AppLayout>;
 }
+
+App.getInitialProps = (store: ReduxStore, path: string): Promise<unknown>[] => {
+  return matchRoutes(routes, path).map(async ({ route, match }) => {
+    const comp: Container<typeof match.params> = await (route.component as LoadableComponent<any>).load();
+    return comp.fetchData ? comp.fetchData({ store, match }) : Promise.resolve();
+  });
+};
 
 export default App;

@@ -12,15 +12,16 @@ function Users({ users, loading }: UsersProps) {
     <p>load users...</p>
   ) : (
     <ul>
-      {users?.map((user) => (
-        <li key={user.id}>
-          <Link to={`/users/${user.id}`}>
-            <p>
-              {user.username} {user.email}
-            </p>
-          </Link>
-        </li>
-      ))}
+      {users?.length &&
+        users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`}>
+              <p>
+                {user.username} {user.email}
+              </p>
+            </Link>
+          </li>
+        ))}
     </ul>
   );
 }
