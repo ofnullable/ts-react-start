@@ -10,14 +10,16 @@ function User({ user, loading }: UserProps) {
   return loading ? (
     <p>load user...</p>
   ) : (
-    <div>
-      <h1>
-        {user?.username} ({user?.name})
-      </h1>
-      <p>
-        <b>email:</b> {user?.email}
-      </p>
-    </div>
+    user && (
+      <div>
+        <h1>
+          {user.username} ({user.name})
+        </h1>
+        <p>
+          <b>email:</b> {user.email}
+        </p>
+      </div>
+    )
   );
 }
 
