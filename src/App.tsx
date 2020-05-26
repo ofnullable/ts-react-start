@@ -31,7 +31,7 @@ function App() {
 App.getInitialProps = (store: ReduxStore, path: string): Promise<unknown>[] => {
   return matchRoutes(routes, path).map(async ({ route, match }) => {
     const comp: Container<typeof match.params> = await (route.component as LoadableComponent<any>).load();
-    return comp.fetchData ? comp.fetchData({ store, match }) : Promise.resolve();
+    return comp.preload ? comp.preload({ store, match }) : Promise.resolve();
   });
 };
 

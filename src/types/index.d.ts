@@ -7,6 +7,6 @@ declare global {
     __REDUX_STATE__: AppState;
     __REDUX_DEVTOOLS_EXTENSION__?: () => any;
   }
-  type fetchData<T> = (ctx: Context<T>) => Promise<unknown>;
-  type Container<T> = React.ComponentType<T> & { fetchData?: fetchData<T> };
+  type Preload<T> = (ctx: Context<T>) => Promise<unknown>;
+  type Container<T> = React.ComponentType<T> & { preload?: Preload<T> };
 }
