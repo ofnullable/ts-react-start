@@ -1,4 +1,4 @@
-import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest, ForkEffect } from 'redux-saga/effects';
 import * as types from '../actions/types';
 import { loadUserApi, loadUsersApi } from '../../apis/user';
 import { LoadUserAction, loadUserSuccess, loadUserFailure, loadUsersSuccess, loadUsersFailure } from '../actions/users';

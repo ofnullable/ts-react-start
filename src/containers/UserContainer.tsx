@@ -10,7 +10,7 @@ function UserContainer() {
   return <User user={data} loading={loading} />;
 }
 
-export const fetchData: fetchData<{ id: string }> = async ({ store, match }) => {
+export const preload: Preload<{ id: string }> = async ({ store, match }) => {
   const user = store.getState().users.user.data;
   const needFetch = !user || user.id !== Number(match.params.id);
   if (needFetch) {
