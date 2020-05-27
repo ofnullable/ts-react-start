@@ -20,7 +20,7 @@ function UsersPage({ route }: UsersPageProps) {
   );
 }
 
-export const preload: Preload<{}> = async ({ store }) => {
+export const preload: Preload<null> = async ({ store }) => {
   if (!store.getState().users.users.data) {
     store.dispatch(loadUsersRequest());
   }
