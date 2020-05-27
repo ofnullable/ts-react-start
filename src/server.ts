@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { resolve } from 'path';
-import ssrMiddleware from './server/ssrMiddleware';
-import { webpackDevMiddleware, webpackHotMiddleware } from './server/HMR';
+import renderer from './middleware/renderer';
+import { webpackDevMiddleware, webpackHotMiddleware } from './middleware/HMR';
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -26,7 +26,7 @@ if (!prod) {
   app.use(webpackHotMiddleware);
 }
 
-app.use(ssrMiddleware);
+app.use(renderer);
 
 const port = process.env.PORT || 3000;
 

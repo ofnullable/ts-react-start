@@ -11,9 +11,9 @@ function UserContainer() {
 }
 
 export const preload: Preload<{ id: string }> = async ({ store, match }) => {
-  const user = store.getState().users.user.data;
-  const needFetch = !user || user.id !== Number(match.params.id);
-  if (needFetch) {
+  const user = store.getState().users.user;
+  const needFetch = !user.data || user.data.id !== Number(match.params.id);
+  if (needFetch && !user.loading) {
     store.dispatch(loadUserRequest(match.params.id));
   }
 };
