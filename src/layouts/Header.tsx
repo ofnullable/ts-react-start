@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import * as React from 'react';
-import { css, jsx } from '@emotion/core';
+import { css } from '@emotion/core';
 import { NavLink } from 'react-router-dom';
 
 const headerStyle = css`
