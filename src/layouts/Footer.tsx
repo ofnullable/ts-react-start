@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { css, jsx } from '@emotion/core';
+import { css } from '@emotion/core';
 
 const footerStyle = css`
   height: 120px;

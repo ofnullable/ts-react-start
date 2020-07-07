@@ -12,6 +12,7 @@ import AppLayout from './layouts/AppLayout';
 import './styles/App.scss';
 
 if (typeof Proxy === 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('immer').enableES5();
 }
 

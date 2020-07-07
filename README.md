@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to ts-react-starter 👋</h1>
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.2.1-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/ofnullable/ts-react-starter#readme)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ofnullable/ts-react-starter/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/ofnullable/ts-react-starter)](https://github.com/ofnullable/ts-react-starter/blob/master/LICENSE)

@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import * as React from 'react';
-import { css, jsx } from '@emotion/core';
+import { css } from '@emotion/core';
 
 const errorPageStyle = css`
   flex: 1 1;
