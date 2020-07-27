@@ -13,7 +13,7 @@ module.exports = (target) => {
       loader: 'ts-loader',
     },
     style: !isServer && prod ? MiniCssExtractPlugin.loader : 'style-loader',
-    css: isServer ? { loader: 'css-loader', options: { onlyLocals: true } } : 'css-loader',
+    css: isServer ? { loader: 'css-loader', options: { modules: { exportOnlyLocals: true } } } : 'css-loader',
     sass: 'sass-loader',
     postcss: 'postcss-loader',
     url: {
