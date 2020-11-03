@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const loaders = require('./loaders');
 const base = require('./webpack.base');
 
-const mode = process.env.NODE_ENV;
+const mode = process.env.NODE_ENV || 'development';
 const isProd = mode === 'production';
 const clientLoaders = loaders('client');
 const hotMiddlewareScript = `webpack-hot-middleware/client?path=/__webpack_hmr&reload=true`;
@@ -50,11 +50,13 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
       },
     }),
-    isProd
-      ? new MiniCssExtractPlugin({
-          filename: 'static/css/[name].[hash:8].css',
-          chunkFilename: 'static/css/[name].[hash:8].chunk.css',
-        })
-      : new webpack.HotModuleReplacementPlugin(),
+    ...(isProd
+      ? [
+          new MiniCssExtractPlugin({
+            filename: 'static/css/[name].[hash:8].css',
+            chunkFilename: 'static/css/[name].[hash:8].chunk.css',
+          }),
+        ]
+      : [new webpack.HotModuleReplacementPlugin()]),
   ],
 };

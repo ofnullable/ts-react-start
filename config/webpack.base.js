@@ -1,4 +1,4 @@
-const mode = process.env.NODE_ENV;
+const mode = process.env.NODE_ENV || 'development';
 const isProd = mode === 'production';
 
 module.exports = {
@@ -10,5 +10,6 @@ module.exports = {
   },
   optimization: {
     minimize: isProd,
+    runtimeChunk: true,
   },
 };

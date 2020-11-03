@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["react-app", { "typescript": true } ],
+    [
+      "@emotion/babel-preset-css-prop",
+      {
+        "autoLabel": true,
+        "labelFormat": "[local]"
+      }
+    ]
+  ],
+  "plugins": [
+    "@loadable/babel-plugin"
+  ]
+}
