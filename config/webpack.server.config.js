@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const nodeExternals = require('webpack-node-externals');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const base = require('./webpack.base');
 const loaders = require('./loaders');
 
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   entry: {
-    server: './src/server.ts',
+    server: './src/server/index.ts',
   },
 
   output: {
@@ -44,4 +45,6 @@ module.exports = {
   },
 
   externals: [nodeExternals()],
+
+  plugins: [new LoadablePlugin()],
 };
