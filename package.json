@@ -1,6 +1,6 @@
 {
   "name": "ts-react-starter",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "React Typescript start",
   "main": "src/server",
   "scripts": {
