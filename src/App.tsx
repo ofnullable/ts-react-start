@@ -33,7 +33,7 @@ App.getInitialProps = (store: Store, path: string, search: string): Promise<unkn
   return matchRoutes(routes, path).map(({ route, match }) =>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (route.component as LoadableComponent<unknown>).load().then(({ default: comp }: any) => {
-      return (comp as Container<typeof match.params>).preload?.({ store, match, search }) || Promise.resolve();
+      return (comp as Container<unknown>).preload?.({ store, match, search }) || Promise.resolve();
     })
   );
 };
