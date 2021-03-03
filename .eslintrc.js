@@ -19,8 +19,6 @@ module.exports = {
   plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks'],
   extends: [
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
@@ -29,7 +27,6 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/jsx-uses-react': 1,
-    'prettier/prettier': [2, { printWidth: 120 }],
     '@typescript-eslint/explicit-module-boundary-types': 0,
   },
 };

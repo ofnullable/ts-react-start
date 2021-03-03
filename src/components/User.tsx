@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from '../store';
-import { actions } from '../store/users/action';
+import { userActions } from '../store/users/slice';
 
 function User() {
-  const { data: user, loading } = useSelector((state: AppState) => state.users.user);
+  const { data: user, loading } = useSelector((state) => state.users.user);
 
   return loading ? (
     <p>load user...</p>
@@ -24,7 +23,7 @@ function User() {
 
 (User as Container<{ id: string }>).preload = async ({ store, match }) => {
   const userId = match.params.id;
-  store.dispatch(actions.loadUserRequest(userId));
+  store.dispatch(userActions.loadUserRequest(userId));
 };
 
 export default User;

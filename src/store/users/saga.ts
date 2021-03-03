@@ -1,31 +1,32 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import { loadUserApi, loadUsersApi } from '../../lib/api/user';
-import { actions, types } from './action';
+import { userActions } from './slice';
 
-function* loadUser({ id }: ReturnType<typeof actions.loadUserRequest>) {
+function* loadUser({ payload }: PayloadAction<string>) {
   try {
-    const { data } = yield call(loadUserApi, id);
-    yield put(actions.loadUserSuccess(data));
+    const { data } = yield call(loadUserApi, payload);
+    yield put(userActions.loadUserSuccess(data));
   } catch (e) {
-    yield put(actions.loadUserFailure(e.response?.data));
+    yield put(userActions.loadUserFailure(e.response?.data));
   }
 }
 
 function* watchLoadUser() {
-  yield takeLatest(types.LOAD_USER_REQUEST, loadUser);
+  yield takeLatest(userActions.loadUserRequest, loadUser);
 }
 
 function* loadUsers() {
   try {
     const { data } = yield call(loadUsersApi);
-    yield put(actions.loadUsersSuccess(data));
+    yield put(userActions.loadUsersSuccess(data));
   } catch (e) {
-    yield put(actions.loadUsersFailure(e.response?.data));
+    yield put(userActions.loadUsersFailure(e.response?.data));
   }
 }
 
 function* watchLoadUsers() {
-  yield takeLatest(types.LOAD_USERS_REQUEST, loadUsers);
+  yield takeLatest(userActions.loadUsersRequest, loadUsers);
 }
 
 export default function* () {

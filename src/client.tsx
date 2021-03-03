@@ -1,18 +1,19 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
+import { Store } from 'redux';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import configureStore, { ReduxStore } from './store';
+import configureStore from './store';
 
 const store = configureStore(window.__REDUX_STATE__);
 const render = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
-function renderApp(reduxStore: ReduxStore): void {
+function renderApp(reduxStore: Store): void {
   return render(
     <Provider store={reduxStore}>
       <BrowserRouter>
