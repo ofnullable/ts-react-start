@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
+import users from './users/slice';
 
-import users from './users/reducer';
+const reducer = combineReducers({
+  users: users.reducer,
+});
 
-export interface AppState {
-  users: ReturnType<typeof users>;
-}
-
-export default combineReducers({ users });
+export type RootState = ReturnType<typeof reducer>;
+export default reducer;

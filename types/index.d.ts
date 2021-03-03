@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ComponentType } from 'react';
 import { Store } from 'redux';
+import { ComponentType } from 'react';
 import { match } from 'react-router-dom';
-import { AppState } from '../src/store';
+import { RootState } from '../src/store';
 
 declare global {
   interface NodeModule {
@@ -10,8 +10,7 @@ declare global {
   }
 
   interface Window {
-    __REDUX_STATE__?: AppState;
-    __REDUX_DEVTOOLS_EXTENSION__?: () => any;
+    __REDUX_STATE__?: RootState;
   }
 
   interface ErrorResponse {
@@ -27,21 +26,13 @@ declare global {
   }
 
   export interface Context<T> {
-    store: Store<AppState>;
+    store: Store<RootState>;
     match: match<T>;
     search: string;
   }
 
   type Preload<T> = (ctx: Context<T>) => Promise<unknown>;
   type Container<T> = ComponentType<T> & { preload?: Preload<T> };
-
-  type ActionCreator<T extends string> = (...args: any[]) => { type: T };
-
-  type ActionTypes<T extends any> = T extends ActionCreator<any>
-    ? ReturnType<T>
-    : T extends Record<string, any>
-    ? { [k in keyof T]: ActionTypes<T[k]> }[keyof T]
-    : never;
 }
 
 declare module 'react' {
@@ -52,5 +43,5 @@ declare module 'react' {
 
 declare module 'react-redux' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultRootState extends AppState {}
+  interface DefaultRootState extends RootState {}
 }
